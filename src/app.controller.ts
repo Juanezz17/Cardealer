@@ -2,7 +2,8 @@ import {  Controller,
           Get,
           Post,
           Patch,
-          Delete } from '@nestjs/common';
+          Delete,
+          Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller("cars")
@@ -19,4 +20,13 @@ export class AppController {
     return ("Aqui se van a registrar los carros")
   }
 
+  @Patch(":id")
+  actualizarCarro(@Param("id") id:string) : string {
+    return `Aqui se van a actualizar los carros: ${id}`;
+  }
+
+  @Delete(":id")
+  eliminarCarro(@Param("id") id:string) : string {
+    return `Aqui se van a eliminar los carros: ${id}`;
+  }
 }
